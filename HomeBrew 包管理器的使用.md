@@ -6,59 +6,43 @@ HomeBrew 官网是：[https://brew.sh](https://brew.sh)，另外，Github 仓库
 
 本文记录的是在使用过程中遇到的问题以及注意事项。
 
-
-
 # 安装 Brew
 
 在 [HomeBrew官网](https://brew.sh) 中提供了 brew 的安装命令：
-
 
 ```bash
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-
 或者执行如下命令：
-
 
 ```bash
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-
 **注意：** 直接在命令终端运行该命令的话之后的所有的软件包默认都安装在 `/usr/local` 目录下，当然也是推荐的安装方式。如果想要改变之后软件包的安装目录可以在安装之后在环境变量中设置 `HOMEBREW_PREFIX` 来进行改变之后软件包的安装目录，示例：
-
 
 ```bash
 export HOMEBREW_PREFIX = $(YouPath)
 ```
 
-
 安装命令执行完成后可以执行如下命令验证是否安装成功：
-
 
 ```bash
 $ brew help
 ```
 
-
-
 # 基本使用
-
-
 
 ## 检查系统环境
 
 在 brew 安装成功后，你可以使用 `doctor` 命令来检查你的系统环境：
 
-
 ```bash
 $ brew doctor
 ```
 
-
 如果你的系统存在潜在问题，就会列出警告信息。示例：
-
 
 ```
 Please note that these warnings are just used to help the Homebrew maintainers
@@ -77,12 +61,9 @@ building Homebrew formulae, and may need to be deleted.
 ...
 ```
 
-
-
 ## 安装软件包
 
 HomeBrew 提供了丰富的软件包，如果你想要安装软件包只需要执行如下命令即可：
-
 
 ```bash
 $ brew install <package_name>
@@ -90,12 +71,9 @@ $ brew install <package_name>
 
 另外，如果你不知道或记不清你想要安装的软件包你也可以通过 `search` 命令进行查找软件包。
 
-
-
 ## 查找软件包
 
 比如，我想要安装 `wget` 软件包，但是我又记不得全名称。这样，我就可以利用 `search` 命令进行搜索：
-
 
 ```bash
 $ brew search wge
@@ -106,8 +84,6 @@ brew-gem         liblwgeom        pwgen            sf-pwgen         wget ✔    
 
 在 Formulae 信息中，就会列出所有符合条件的软件包。注意看 `wget` ，在其后有一个 `✔` 标识。标识该软件包是安装频率最高的软件包。
 
-
-
 ## 卸载软件包
 
 卸载软件包很简单，仅仅需要执行如下命令即可：
@@ -116,8 +92,6 @@ brew-gem         liblwgeom        pwgen            sf-pwgen         wget ✔    
 $ brew uninstall <package_name>
 ```
 
-
-
 ## 列出安装的软件列表
 
 时间久了，就会记不清在系统中使用 brew 到底安装了多少软件包。那我们就可以使用 `list` 命令列出所有安装的软件包：
@@ -125,8 +99,6 @@ $ brew uninstall <package_name>
 ```bash
 $ brew list
 ```
-
-
 
 ## 查看 brew 配置
 
@@ -165,8 +137,6 @@ Xcode: N/A
 export HOMEBREW_PREFIX=/opt/local
 ```
 
-
-
 ## 禁止自动更新
 
 你有没有发现，在使用中如果想要安装软件包就会更待很长一段时间，就如同卡顿一样。其根本原因是要检查 `brew` 是否需要更新，如果官网提供了一个新的版本就会自动请求更新，只有更新之后才会进行安装软件包。所以，这个感觉到这个设置很影响客户体验有木有😇😇😇😇。
@@ -175,16 +145,13 @@ export HOMEBREW_PREFIX=/opt/local
 
 同样的，`brew` 有一个环境配置： `HOMEBREW_NO_AUTO_UPDATE` 。该配置用于是否取消自动更新。我们只需要在环境变量中设置其值为 `true` 即可：
 
-
 ```bash
 export HOMEBREW_NO_AUTO_UPDATE=true
 ```
 
-
 如果是在配置文件中修改的记得使其生效，可以执行命令： `source <YouConfig>` 。
 
 现在再次执行 `config` 命令查看配置信息：
-
 
 ```bash
 $ brew config
@@ -209,28 +176,21 @@ CLT: 11.0.0.0.1.1567737322
 Xcode: N/A
 ```
 
-
 可以看到在输出的信息中多了 `HOMEBREW_NO_AUTO_UPDATE: true` ，表示其已生效。不信？你可以测试安装一个软件包试试！
-
-
 
 ## 禁止清除缓存
 
-
 默认情况下，HomeBrew 每次安装新软件或者执行更新时就会自动执行 `brew cleanup` 命令进行清除废旧和过时的软件包。但是如果你特别变态不想去让他自动执行 `cleanup` 命令清除这些缓存，那你就可以设置 `HOMEBREW_NO_INSTALL_CLEANUP` 来进行它清除：
-
 
 ```bash
 export HOMEBREW_NO_INSTALL_CLEANUP=true
 ```
 
 | **注意** |
-| --- |
+| :--- |
 | 如果你设置了该配置，就表示之后 brew 不在自动清除废旧、过时的软件包。长时间会在系统磁盘中占用大量的空间。
 
 所以，你需要不定时的手动执行 bren cleanup 命令进行清除！ |
-
-
 
 ## 手动更新
 
@@ -252,8 +212,6 @@ alias brewu='brew update -v && brew upgrade -v && brew autoremove -v && brew cle
 $ brewu
 ```
 
-
-
 # 清华源设置
 
 默认情况下， `brew` 使用的是默认的 `Github` 源。所以在使用中不管是下载还是更新软件都特别慢，有时甚至卡老半天。
@@ -273,12 +231,17 @@ $ brew cask
 
 现在我们就以清华源为例来更改本地源！
 
-清华源地址是：[https://mirrors.tuna.tsinghua.edu.cn/](https://mirrors.tuna.tsinghua.edu.cn/)，你可以直接在搜索中进行搜索 `homebrew` 即可找到响应的源：
+清华源地址是：[https://mirrors.tuna.tsinghua.edu.cn/](https://mirrors.tuna.tsinghua.edu.cn/)，你可以直接在搜索中进行搜索 `homebrew` 即可找到相应的源：
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/667060/1593170304115-f84784e5-5613-4b31-941b-b8281821a0e8.png#height=258&id=hyEXw&originHeight=516&originWidth=1614&originalType=binary&ratio=1&size=47643&status=done&style=none&width=807)
+<div style="text-align: left;">
+  <img src="http://macos-media.knowledge.ituknown.cn/homebrew/images-search.png" alt="images-search.png" width="650" />
+</div>
+
 我们需要更新这些源，其中 `homebrew-bottles` 与我们安装软件有关，所以推荐也进行设置。点击 `homebrew` 即可进入说明页面，在说明页面中也有说明如何使用，只需要按照文档说明执行命令即可：
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/667060/1593170454101-388a478f-fd48-4def-a0ca-f79f6a1f41b3.png#height=542&id=IJENl&originHeight=1084&originWidth=2000&originalType=binary&ratio=1&size=260095&status=done&style=none&width=1000)
+<div style="text-align: left;">
+  <img src="http://macos-media.knowledge.ituknown.cn/homebrew/use-helper.png" alt="use-helper.png" width="650" />
+</div>
 
 所以，笔者这里就替换 `brew` 、 `brew-core` 以及 `brew-cask` ，直接执行如下命令即可：
 
@@ -290,14 +253,14 @@ brew update
 ```
 
 | **注意** |
-| --- |
+| :--- |
 | 如何你没有安装 `brew-cask` ，第三条命令就不需要执行了 |
-
-
 
 等待命令执行完成后执行 `brew config` 即可查看配置的源信息，示例：
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/667060/1593170601198-e206d5be-959d-4012-b9a5-c47f8a052147.png#height=517&id=Fm1DH&originHeight=1034&originWidth=2204&originalType=binary&ratio=1&size=633377&status=done&style=none&width=1102)
+<div style="text-align: left;">
+  <img src="http://macos-media.knowledge.ituknown.cn/homebrew/brew_config.png" alt="brew_config.png" width="650" />
+</div>
 
 现在就来更换 `homebrew-bottles` ，直接点击然后拷贝 URL 链接即可，链接如下：
 

@@ -31,8 +31,6 @@ FILES
      /etc/synthetic.conf
 ```
 
-
-
 # synthetic.conf 配置示例
 
 使用任何命令编辑 /etc/synthetic.conf 文件（以 vim 为例，若文件不存在会自动创建）：
@@ -48,15 +46,13 @@ data	Users/$me/data
 data1	Users/$me/data1
 ```
 
-**注意：**
+| **注意：**                                                   |
+| :----------------------------------------------------------- |
+| 1、每行的两项配置不是以“/”开头（可以理解系统会帮我们加前缀“/”）。 |
+| 2、“data” 与 “Users/username/log” 之间一定要使用 TAB 进行分隔，否则重启后无效。如果指定目录（如 “Users/$me/data”）不存在记得创建。 |
+| 3、示例中的 `$me` 是用户名的意思，别忘记替换为自己用户名，如 foo。 |
+| 4、记得重启Mac。                                             |
 
-**1、每行的两项配置不是以/开头（可以理解系统会帮我们加入前缀 `/`）。**
-
-**2、data 与 Users/username/log 之间一定要使用tab进行分隔，否则重启后无效。如果指定目录（如 Users/$me/data）不存在记得创建。**
-
-**3、示例中的 `$me` 是用户名的意思，别忘记替换为自己用户名，如 foo。**
-
-**4、记得重启Mac。**
 
 重启之后，使用 `ls -l /`命令就会发现在根目录下就有了两个软连接目录：
 
@@ -67,8 +63,6 @@ $ ls -l /
 lrwxr-xr-x   1 root  wheel    46  7 24 13:34 data -> Users/ituknown/data
 lrwxr-xr-x   1 root  wheel    46  7 24 13:34 data1 -> Users/ituknown/data1
 ```
-
-
 
 # synthetic.conf 配置不生效？
 
