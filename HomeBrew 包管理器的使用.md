@@ -234,13 +234,13 @@ $ brew cask
 清华源地址是：[https://mirrors.tuna.tsinghua.edu.cn/](https://mirrors.tuna.tsinghua.edu.cn/)，你可以直接在搜索中进行搜索 `homebrew` 即可找到相应的源：
 
 <div style="text-align: left;">
-  <img src="https://ituknown.cn/macos-media/homebrew/images-search.png" alt="images-search.png" width="650" />
+  <img src="https://ituknown.org/macos-media/homebrew/images-search.png" alt="images-search.png" width="650" />
 </div>
 
 我们需要更新这些源，其中 `homebrew-bottles` 与我们安装软件有关，所以推荐也进行设置。点击 `homebrew` 即可进入说明页面，在说明页面中也有说明如何使用，只需要按照文档说明执行命令即可：
 
 <div style="text-align: left;">
-  <img src="https://ituknown.cn/macos-media/homebrew/use-helper.png" alt="use-helper.png" width="650" />
+  <img src="https://ituknown.org/macos-media/homebrew/use-helper.png" alt="use-helper.png" width="650" />
 </div>
 
 所以，笔者这里就替换 `brew` 、 `brew-core` 以及 `brew-cask` ，直接执行如下命令即可：
@@ -259,7 +259,7 @@ brew update
 等待命令执行完成后执行 `brew config` 即可查看配置的源信息，示例：
 
 <div style="text-align: left;">
-  <img src="https://ituknown.cn/macos-media/homebrew/brew_config.png" alt="brew_config.png" width="650" />
+  <img src="https://ituknown.org/macos-media/homebrew/brew_config.png" alt="brew_config.png" width="650" />
 </div>
 
 现在就来更换 `homebrew-bottles` ，直接点击然后拷贝 URL 链接即可，链接如下：
