@@ -42,15 +42,15 @@ sudo vim /etc/synthetic.conf
 之后输入如下示例内容进行创建软连接：
 
 ```bash
-data	Users/$me/data
-data1	Users/$me/data1
+data	Users/$USER_NAME/data
+data1	Users/$USER_NAME/data1
 ```
 
-| **注意：**                                                   |
+| **注意**                                                     |
 | :----------------------------------------------------------- |
 | 1、每行的两项配置不是以“/”开头（可以理解系统会帮我们加前缀“/”）。 |
-| 2、“data” 与 “Users/username/log” 之间一定要使用 TAB 进行分隔，否则重启后无效。如果指定目录（如 “Users/$me/data”）不存在记得创建。 |
-| 3、示例中的 `$me` 是用户名的意思，别忘记替换为自己用户名，如 foo。 |
+| 2、“data” 与 “Users/USER_NAME/data” 之间一定要使用 TAB 进行分隔，否则重启后无效。如果指定目录（如 “Users/$USER_NAME/data”）不存在记得创建。 |
+| 3、示例中的 `$USER_NAME` 是用户名的意思，别忘记替换为自己用户名，如 foo。 |
 | 4、记得重启Mac。                                             |
 
 
